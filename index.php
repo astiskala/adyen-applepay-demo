@@ -32,6 +32,17 @@
           }).then((response) => response.json());
       };
 
+      const makePayment = function makePayment(data) {
+          return fetch(`payments.php`, {
+              method: 'POST',
+              headers: {
+                  'Accept': 'application/json, text/plain, */*',
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+          }).then((response) => response.json());
+      };
+
       const loadDropIn = function loadDropIn() {
           getPaymentMethods().then((paymentMethodsResponse) => {
               const checkout = new AdyenCheckout({
@@ -44,7 +55,7 @@
               const paymentMethodsConfiguration = {
                   applepay: {
                       amount: 100,
-                      currencyCode: 'AUD',
+                      currencyCode: 'USD',
                       countryCode: 'AU',
                       supportedNetworks: ['visa', 'masterCard', 'amex', 'discover', 'maestro', 'jcb'],
                       merchantCapabilities: ['supports3DS'],
@@ -74,7 +85,7 @@
                   .create('dropin', {
                       paymentMethodsConfiguration,
                       amount: {
-                          currency: 'AUD',
+                          currency: 'USD',
                           value: 100
                       },
                       onSubmit: (state, component) => {
