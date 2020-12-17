@@ -54,9 +54,9 @@
 
               const paymentMethodsConfiguration = {
                   applepay: {
-                      amount: 100,
-                      currencyCode: 'USD',
-                      countryCode: 'AU',
+                      amount: 101,
+                      currencyCode: 'EUR',
+                      countryCode: 'NL',
                       supportedNetworks: ['visa', 'masterCard', 'amex', 'discover', 'maestro', 'jcb'],
                       merchantCapabilities: ['supports3DS'],
                       onSubmit: (state, component) => {
@@ -84,32 +84,6 @@
               dropin = checkout
                   .create('dropin', {
                       paymentMethodsConfiguration,
-                      amount: {
-                          currency: 'USD',
-                          value: 100
-                      },
-                      onSubmit: (state, component) => {
-                          makePayment(state.data)
-                              .then((response) => {
-                                  if (response.action) {
-                                      dropin.handleAction(response.action);
-                                  } else if (response.resultCode) {
-                                      dropin.setStatus('success', {
-                                          message: response.resultCode
-                                      });
-                                  } else if (response.message) {
-                                      dropin.setStatus('success', {
-                                          message: response.message
-                                      });
-                                  }
-                              })
-                              .catch((error) => {
-                                  dropin.setStatus('error');
-                              });
-                      },
-                      onAdditionalDetails: (state, component) => {
-                          // TODO
-                      },
                       onError: (state, component) => {
                           console.log('onError', state);
                       },
