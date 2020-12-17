@@ -46,6 +46,8 @@
                       amount: 100,
                       currencyCode: 'AUD',
                       countryCode: 'AU',
+                      supportedNetworks: ['visa', 'masterCard', 'amex', 'discover', 'maestro', 'jcb'],
+                      merchantCapabilities: ['supports3DS'],
                       onSubmit: (state, component) => {
                           makePayment(state.data)
                               .then((response) => {
