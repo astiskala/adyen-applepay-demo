@@ -57,7 +57,7 @@
                       amount: 101,
                       currencyCode: 'EUR',
                       countryCode: 'NL',
-                      onSubmit: (state) => {
+                      onChange: (state) => {
                           makePayment(state.data)
                               .then((response) => {
                                   if (response.action) {
