@@ -5,14 +5,15 @@ require('log.php');
 $merchantAccount = getenv('MERCHANT_ACCOUNT');
 $apikey = getenv('CHECKOUT_APIKEY');
 
-$requestObject->merchantAccount = $merchantAccount;
-$requestObject->countryCode = "AU";
-$requestObject->amount->currency = "AUD";
-$requestObject->amount->value = 100;
-$requestObject->channel = "Web";
-$requestObject->shopperLocale = "en-US";
-
-$request = json_encode($requestObject);
+$request = new \stdClass();
+$request->merchantAccount = $merchantAccount;
+$request->countryCode = "AU";
+$request->amount = new \stdClass();
+$request->amount->currency = "AUD";
+$request->amount->value = 100;
+$request->channel = "Web";
+$request->shopperLocale = "en-US";
+$request->allowedPaymentMethods = [ "applepay" ];
 
 $url = "https://checkout-test.adyen.com/v65/paymentMethods";
 $json_data = json_encode($request);
