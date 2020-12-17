@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Adyen Checkout samples</title>
-    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.18.2/adyen.css">
+    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.18.1/adyen.css">
 </head>
 <body>
     <div class="container container--full-width">
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.18.2/adyen.js"></script>
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.18.1/adyen.js"></script>
     <script>
       const getPaymentMethods = function getPaymentMethods() {
           return fetch(`paymentMethods.php`, {
