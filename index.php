@@ -46,10 +46,16 @@
       const loadDropIn = function loadDropIn() {
           getPaymentMethods().then((paymentMethodsResponse) => {
               const checkout = new AdyenCheckout({
-                  environment: 'test',
-                  clientKey: '<?=getenv('CHECKOUT_CLIENTKEY') ?>',
                   paymentMethodsResponse: paymentMethodsResponse,
+                  clientKey: '<?=getenv('CHECKOUT_CLIENTKEY') ?>',
                   locale: 'en-US',
+                  environment: 'test',
+                  onSubmit: (state, dropin) => {
+                      // TODO
+                  },
+                  onAdditionalDetails: (state, dropin) => {
+                      // TODO
+                  },
               });
 
               const paymentMethodsConfiguration = {
