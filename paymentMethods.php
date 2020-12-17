@@ -7,15 +7,15 @@ $apikey = getenv('CHECKOUT_APIKEY');
 
 $request = new \stdClass();
 $request->merchantAccount = $merchantAccount;
-$request->countryCode = "AU";
+$request->countryCode = "NL";
 $request->amount = new \stdClass();
-$request->amount->currency = "AUD";
-$request->amount->value = 100;
+$request->amount->currency = "EUR";
+$request->amount->value = 101;
 $request->channel = "Web";
 $request->shopperLocale = "en-US";
 $request->allowedPaymentMethods = [ "applepay" ];
 
-$url = "https://checkout-test.adyen.com/v65/paymentMethods";
+$url = "https://checkout-test.adyen.com/v66/paymentMethods";
 $json_data = json_encode($request);
 $curlAPICall = curl_init();
 

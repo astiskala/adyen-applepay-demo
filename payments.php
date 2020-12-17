@@ -11,7 +11,7 @@ if (file_get_contents('php://input') != '') {
     $request = array();
 }
 
-$url = "https://checkout-test.adyen.com/v65/payments";
+$url = "https://checkout-test.adyen.com/v66/payments";
 
 $json_data = json_encode($request);
 $curlAPICall = curl_init();
