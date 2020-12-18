@@ -11,7 +11,6 @@
     <div class="container container--full-width">
         <div class="main">
             <div class="checkout-container">
-                <h1>Drop-in</h1>
                 <div class="payment-method">
                     <div id="dropin-container">
                         <!-- Drop-in will be rendered here -->

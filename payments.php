@@ -8,14 +8,17 @@ $apikey = getenv('CHECKOUT_APIKEY');
 if (file_get_contents('php://input') != '') {
     $request = json_decode(file_get_contents('php://input'), true);
 } else {
-    $request = array();
+    $request = new \stdClass();
 }
 
 $request->merchantAccount = $merchantAccount;
 $request->amount = new \stdClass();
 $request->amount->currency = "EUR";
 $request->amount->value = 101;
-$request->reference = trim(com_create_guid(), '{}');
+$request->reference = strtolower(md5(uniqid(rand(), true)));
+$request->shopperInteraction = "Ecommerce";
+$request->recurringProcessingModel = "CardOnFile";
+$request->storePaymentMethod = true;
 
 $url = "https://checkout-test.adyen.com/v66/payments";
 
