@@ -6,23 +6,24 @@ $merchantAccount = getenv('MERCHANT_ACCOUNT');
 $apikey = getenv('CHECKOUT_APIKEY');
 
 if (file_get_contents('php://input') != '') {
-    $request = json_decode(file_get_contents('php://input'), true);
+    $clientRequest = json_decode(file_get_contents('php://input'), true);
 } else {
-    $request = new \stdClass();
+    $clientRequest = array();
 }
 
-$request->merchantAccount = $merchantAccount;
-$request->amount = new \stdClass();
-$request->amount->currency = "EUR";
-$request->amount->value = 101;
-$request->reference = strtolower(md5(uniqid(rand(), true)));
-$request->shopperInteraction = "Ecommerce";
-$request->recurringProcessingModel = "CardOnFile";
-$request->storePaymentMethod = true;
+$serverRequest = new \stdClass();
+$serverRequest->merchantAccount = $merchantAccount;
+$serverRequest->amount = new \stdClass();
+$serverRequest->amount->currency = "EUR";
+$serverRequest->amount->value = 101;
+$serverRequest->reference = strtolower(md5(uniqid(rand(), true)));
+$serverRequest->shopperInteraction = "Ecommerce";
+$serverRequest->recurringProcessingModel = "CardOnFile";
+$serverRequest->storePaymentMethod = true;
 
 $url = "https://checkout-test.adyen.com/v66/payments";
 
-$json_data = json_encode($request);
+$json_data = json_encode(array_merge(json_decode($request, true),json_decode($serverRequest, true)));
 $curlAPICall = curl_init();
 
 $method = "POST";
