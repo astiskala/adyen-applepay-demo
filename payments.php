@@ -17,6 +17,7 @@ $serverRequest->amount = new \stdClass();
 $serverRequest->amount->currency = "EUR";
 $serverRequest->amount->value = 101;
 $serverRequest->reference = strtolower(md5(uniqid(rand(), true)));
+$serverRequest->shopperReference = "AdamStiskala";
 $serverRequest->shopperInteraction = "Ecommerce";
 $serverRequest->recurringProcessingModel = "CardOnFile";
 $serverRequest->storePaymentMethod = true;
