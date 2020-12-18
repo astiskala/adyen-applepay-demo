@@ -23,7 +23,7 @@ $serverRequest->storePaymentMethod = true;
 
 $url = "https://checkout-test.adyen.com/v66/payments";
 
-$json_data = json_encode(array_merge(json_decode($request, true),json_decode($serverRequest, true)));
+$json_data = json_encode(array_merge($clientRequest, (array)$serverRequest));
 $curlAPICall = curl_init();
 
 $method = "POST";
