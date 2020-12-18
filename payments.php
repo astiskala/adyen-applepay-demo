@@ -11,6 +11,12 @@ if (file_get_contents('php://input') != '') {
     $request = array();
 }
 
+$request->merchantAccount = $merchantAccount;
+$request->amount = new \stdClass();
+$request->amount->currency = "EUR";
+$request->amount->value = 101;
+$request->reference = trim(com_create_guid(), '{}');
+
 $url = "https://checkout-test.adyen.com/v66/payments";
 
 $json_data = json_encode($request);
